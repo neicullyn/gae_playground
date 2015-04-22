@@ -1,5 +1,10 @@
+#!/usr/bin/python
 import cgi
 import urllib
+import sample
+import sys
+import StringIO
+import subprocess
 
 from google.appengine.api import users
 from google.appengine.ext import ndb
@@ -112,8 +117,23 @@ class Guestbook(webapp2.RequestHandler):
 
         query_params = {'guestbook_name': guestbook_name}
         self.redirect('/?' + urllib.urlencode(query_params))
-
+        
+class YelpPage(webapp2.RedirectHandler):
+    def get(self):
+#         gae_stdout = sys.stdout
+#         new_stdout = StringIO.StringIO()
+#         sys.stdout = new_stdout
+        
+        content = subprocess.check_output('python sample.py --term="bars" --location="San Francisco, CA', shell = True)
+#         content = ' '
+        lines = content.split('\n')
+        for line in lines:
+            self.response.write(line.strip() + '<br>')
+        pass
+    
+#         sys.stdout = gae_stdout
 app = webapp2.WSGIApplication([
     ('/', MainPage),
     ('/sign', Guestbook),
+    ('/yelp', YelpPage)
 ], debug=True)
