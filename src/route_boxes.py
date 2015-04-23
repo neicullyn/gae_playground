@@ -231,7 +231,7 @@ class route_boxes:
                 while flag and k < len(self.lon_space):
                     flag = False
                     for y in boxes_list[k]:
-                        if y[0] == x[0] and y[1] == y[1]:
+                        if y[0] == x[0] and y[1] == x[1]:
                             end = (x[1], k)
                             flag = True
                             boxes_list[k].remove(y)
@@ -271,7 +271,7 @@ class route_boxes:
                 while flag and k < len(self.lat_space):
                     flag = False
                     for y in boxes_list[k]:
-                        if y[0] == x[0] and y[1] == y[1]:
+                        if y[0] == x[0] and y[1] == x[1]:
                             end = (k, x[1])
                             flag = True
                             boxes_list[k].remove(y)
