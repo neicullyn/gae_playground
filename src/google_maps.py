@@ -91,8 +91,8 @@ try:
 #         points = route['overview_polyline']['points'] + '='
 # 
         points_raw = route['overview_polyline']['points']
-        lon, lat = zip(*points_decode(points_raw))
-        plt.plot(lat, lon, 'o')
+        lat, long = zip(*points_decode(points_raw))
+        plt.plot(lon, lat, 'o')
         plt.show()
 #         for x in points_decode(points_raw):
 #             print x
