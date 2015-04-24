@@ -351,7 +351,7 @@ class route_boxes:
 
 if __name__ == "__main__":
     
-    box_size = 0.02
+    box_size = 0.01
         
     with open("Pasadena2LAX.txt", 'r') as input_file:
         data_str = input_file.read()
@@ -368,9 +368,9 @@ if __name__ == "__main__":
     # 
     points_raw = route['overview_polyline']['points']
     
-#     route = points_decode(points_raw)
+    route = points_decode(points_raw)
 #     route = [(1, -0.5), (0, 0)]
-    route = [(1, -0.5), (0, 0), (0.8, 1), (1.1, 0.9), (1.4, 1.3), (1.1, 1.3)]
+#     route = [(1, -0.5), (0, 0), (0.8, 1), (1.1, 0.9), (1.4, 1.3), (1.1, 1.3)]
         
     boxes = route_boxes(route, box_size)    
     
@@ -379,24 +379,15 @@ if __name__ == "__main__":
 #     boxes.adjust_axis(plt.gca())    
 #     boxes.draw_boxes(plt.gca(), 0)
 #     
-#     plt.figure()    
-#     boxes.draw_route(plt.gca())
-#     boxes.adjust_axis(plt.gca())
-#     boxes.draw_boxes(plt.gca(), 1)
-#     
-#     plt.figure()    
-#     boxes.draw_route(plt.gca())
-#     boxes.adjust_axis(plt.gca())
-#     boxes.draw_boxes(plt.gca(), 2)
     plt.figure()    
     boxes.draw_route(plt.gca())
     boxes.adjust_axis(plt.gca())
-    boxes.draw_boxes(plt.gca(), 3)   
+    boxes.draw_boxes(plt.gca(), 1)
      
     plt.figure()    
     boxes.draw_route(plt.gca())
     boxes.adjust_axis(plt.gca())
-    boxes.draw_boxes(plt.gca(), 4)
+    boxes.draw_boxes(plt.gca(), 2)
     
     plt.figure()    
     boxes.draw_route(plt.gca())
